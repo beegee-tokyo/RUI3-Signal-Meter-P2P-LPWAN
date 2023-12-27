@@ -123,8 +123,6 @@ AT+P2P=916000000:7:0:1:8:5
 #### ⚠️ TIP ⚠️        
 The command _**`AT+PRECV=0`**_ is _**required**_ to stop the device from listening. While in RX mode, parameters cannot be changed.
 
-step files for the enclosure
-
 To be able to receive packets from other devices, they have to be setup to exactly the same parameters.
 
 If the setup of all devices is the same, the display will show the received LoRa P2P packets:
@@ -245,7 +243,7 @@ Callbacks are defined for all possible events, both LoRa P2P and LoRaWAN and tri
 
 The **`setup()`**` function is checking in which mode the device is setup and initializes the required event callbacks.
 
-The application is complete timer triggered and the **`loop()`**` function is not used.
+The application is complete timer triggered and the **`loop()`** function is not used.
 
 ## LoRa P2P callbacks
 
