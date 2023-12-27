@@ -218,7 +218,7 @@ If the device cannot join the network, it will show an error on the display:
 
 In this case double check all settings on the device and LoRaWAN server and check if a gateway is in range and connected to the LoRaWAN server.
 
-After the device has joined the network, it will send confirmed packets to the LoRaWAN server. The LoRaWAN server will send a downlink packet with the ACK. The display will show
+After the device has joined the network, it will send unconfirmed packets with LinkCheck request enabled to the LoRaWAN server. The LoRaWAN server will answer to the LinkCheck request. The display will show
 - Linkcheck result
 - Packet number and number of gateways
 - DR of the received packet
@@ -256,6 +256,7 @@ The application is complete timer triggered and the **`loop()`**` function is no
  * @param data structure with RX packet information
  */
 void recv_cb_p2p(rui_lora_p2p_recv_t data)
+{}
 ```
 
 ## LoRaWAN callback
@@ -267,6 +268,7 @@ void recv_cb_p2p(rui_lora_p2p_recv_t data)
  * @param status status of join request
  */
 void join_cb_lpw(int32_t status)
+{}
 
 /**
  * @brief Receive callback for LoRaWAN mode
@@ -274,6 +276,7 @@ void join_cb_lpw(int32_t status)
  * @param data structure with RX packet information
  */
 void recv_cb_lpw(SERVICE_LORA_RECEIVE_T *data)
+{}
 
 /**
  * @brief Send finished callback for LoRaWAN mode
@@ -281,6 +284,7 @@ void recv_cb_lpw(SERVICE_LORA_RECEIVE_T *data)
  * @param status
  */
 void send_cb_lpw(int32_t status)
+{}
 
 /**
  * @brief Linkcheck callback
@@ -288,6 +292,7 @@ void send_cb_lpw(int32_t status)
  * @param data structure with the result of the Linkcheck
  */
 void linkcheck_cb_lpw(SERVICE_LORA_LINKCHECK_T *data)
+{}
 ```
 
 ## LoRaWAN send
@@ -327,6 +332,8 @@ The display handler callback includes a flag that tells what kind of display con
  *               4 = Linkcheck result display (only LPW LinkCheck mode)
  */
 void handle_display(void *reason)
+{}
+
 ```
 [Back to top](#content)
 
