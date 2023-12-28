@@ -175,7 +175,7 @@ After the device has joined the network, it will send confirmed packets to the L
 
 <center><img src="./assets/lpw-ok-packet.png" alt="LoRaWAN ACK"></center>
 
-If the device is out of the range of gateways (after it had joined before), it will show an error message if the LoRaWAN server did not ACK the packet:
+If the device is out of the range of gateways (after it had joined before), it will show an error message if the LoRaWAN server did not send an ACK for the packet:
 
 - Packet number
 - Error message
@@ -225,7 +225,7 @@ After the device has joined the network, it will send unconfirmed packets with L
 
 <center><img src="./assets/lpw-linkcheck-ok.png" alt="LoRaWAN ACK"></center>
 
-If the device is out of the range of gateways (after it had joined before), it will show an error message if the LoRaWAN server did not ACK the packet:
+If the device is out of the range of gateways (after it had joined before), it will show an error message if the LoRaWAN server did respond to the LinkCheck request:
 - Linkcheck result
 - Number of lost packets
 
