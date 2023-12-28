@@ -239,13 +239,6 @@ void handle_display(void *reason)
 		// LinkCheck result event display
 		if (has_oled)
 		{
-			/**
-
-				last_rssi = data->Rssi;
-				link_check_state = data->State;
-				link_check_demod_margin = data->DemodMargin;
-				link_check_gateways = data->NbGateways;
-			 */
 			rak1921_add_line(line_str);
 			sprintf(line_str, "LinkCheck %s", link_check_state == 0 ? "OK" : "NOK");
 			rak1921_add_line(line_str);
@@ -380,6 +373,15 @@ void setup(void)
 	sprintf(line_str, "RUI3_Tester_V%d.%d.%d", SW_VERSION_0, SW_VERSION_1, SW_VERSION_2);
 	api.system.firmwareVersion.set(line_str);
 
+	// Check if OLED is available
+	Wire.begin();
+	has_oled = init_rak1921();
+	if (has_oled)
+	{
+		sprintf(line_str, "RAK Signal Meter - B %.2fV", api.system.bat.get());
+		rak1921_write_header(line_str);
+	}
+
 	digitalWrite(LED_GREEN, HIGH);
 #ifndef RAK3172
 	time_t serial_timeout = millis();
@@ -404,6 +406,11 @@ void setup(void)
 	digitalWrite(LED_GREEN, LOW);
 	digitalWrite(LED_BLUE, LOW);
 
+	if (!has_oled)
+	{
+		Serial.println("No OLED found");
+	}
+
 	// Check if we are in LoRa P2P or LoRaWAN mode
 	if (api.lora.nwm.get() == 1)
 	{
@@ -412,19 +419,6 @@ void setup(void)
 	else
 	{
 		lorawan_mode = false;
-	}
-
-	// Check if OLED is available
-	Wire.begin();
-	has_oled = init_rak1921();
-	if (!has_oled)
-	{
-		Serial.println("No OLED found");
-	}
-	else
-	{
-		sprintf(line_str, "RAK Signal Meter - B %.2fV", api.system.bat.get());
-		rak1921_write_header(line_str);
 	}
 
 	// Setup callbacks and timers
