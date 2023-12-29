@@ -99,7 +99,7 @@
                 "ARDUINO_WisDuo_RAK3172_Evaluation_Board",
                 "ARDUINO_ARCH_STM32",
                 "ARDUINO_BSP_VERSION=\"4.1.1\"",
-                "DEBUG",
+                "MY_DEBUG=1",
                 "STM32WLE5xx",
                 "RAK3372+RAK5005-O_V1.0",
                 "rak3172",

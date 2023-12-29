@@ -5,5 +5,9 @@
     "sketch": "RUI3-Signal-Meter-P2P-LPWAN.ino",
     "port": "COM23",
     "postbuild": "python rename.py",
+	"buildPreferences": [
+		["compiler.cpp.extra_flags",
+		"-DMY_DEBUG=1"]
+	],
     "version": "1.0.1"
 }

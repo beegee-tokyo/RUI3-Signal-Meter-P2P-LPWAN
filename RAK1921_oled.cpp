@@ -131,3 +131,35 @@ void rak1921_show(void)
 	}
 	oled_display.display();
 }
+
+/**
+ * @brief Clear the display
+ *
+ */
+void rak1921_clear(void)
+{
+	oled_display.setColor(BLACK);
+	oled_display.fillRect(0, STATUS_BAR_HEIGHT + 1, OLED_WIDTH, OLED_HEIGHT);
+	current_line = 0;
+}
+
+/**
+ * @brief Write a line at given position
+ * 
+ * @param line line number
+ * @param y_pos x position to start
+ * @param text String text
+ */
+void rak1921_write_line(int16_t line, int16_t y_pos, String text)
+{
+	oled_display.drawString(y_pos, (line * LINE_HEIGHT) + STATUS_BAR_HEIGHT + 1, text);
+}
+
+/**
+ * @brief Display the buffer
+ * 
+ */
+void rak1921_display(void)
+{
+	oled_display.display();
+}

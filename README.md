@@ -120,6 +120,15 @@ Then the LoRa P2P parameters have to be setup. In this example, I am setting the
 AT+PRECV=0
 AT+P2P=916000000:7:0:1:8:5
 ```
+
+#### ⚠️ TIP ⚠️ 
+If the credentials were set already (they are saved in the flash of the device), the switch to P2P testing can as well be done with
+```at
+ATC+MODE=2
+```
+The device might reboot after this command, if it was not already in LoRa P2P mode.    
+
+
 #### ⚠️ TIP ⚠️        
 The command _**`AT+PRECV=0`**_ is _**required**_ to stop the device from listening. While in RX mode, parameters cannot be changed.
 
@@ -158,6 +167,13 @@ AT+APPEUI=AC1F09FFFE000000
 AT+APPKEY=AC1F09FFFE000000AC1F09FFFE000000
 ATZ
 ```
+
+#### ⚠️ TIP ⚠️ 
+If the credentials were set already (they are saved in the flash of the device), the switch to CFM testing can as well be done with
+```at
+ATC+MODE=1
+```
+The device might reboot after this command, if it was not already in LoRaWAN mode.    
 
 #### ⚠️ IMPORTANT ⚠️        
 The device has to be registered in a LoRaWAN server with these credentials and a gateway in range has to be connected to the LoRaWAN server. Otherwise the device cannot join and there are no tests possible!
@@ -207,6 +223,13 @@ AT+APPEUI=AC1F09FFFE000000
 AT+APPKEY=AC1F09FFFE000000AC1F09FFFE000000
 ATZ
 ```
+
+#### ⚠️ TIP ⚠️ 
+If the credentials were set already (they are saved in the flash of the device), the switch to LinkCheck testing can as well be done with
+```at
+ATC+MODE=0
+```
+The device might reboot after this command, if it was not already in LoRaWAN mode.    
 
 #### ⚠️ IMPORTANT ⚠️        
 The device has to be registered in a LoRaWAN server with these credentials and a gateway in range has to be connected to the LoRaWAN server. Otherwise the device cannot join and there are no tests possible!

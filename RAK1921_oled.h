@@ -21,5 +21,7 @@ bool init_rak1921(void);
 void rak1921_add_line(char *line);
 void rak1921_show(void);
 void rak1921_write_header(char *header_line);
-
+void rak1921_clear(void);
+void rak1921_write_line(int16_t line, int16_t y_pos, String text);
+void rak1921_display(void);
 #endif // RAK1921_H
