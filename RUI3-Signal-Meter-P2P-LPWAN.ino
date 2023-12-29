@@ -55,7 +55,7 @@ void send_packet(void *data)
 		if (use_link_check)
 		{
 			// Linkcheck is enabled, send an unconfirmed packet
-			api.lorawan.send(4, payload, 2, false);
+			api.lorawan.send(4, payload, 2, true, 4);
 		}
 		else
 		{
@@ -96,7 +96,7 @@ void handle_display(void *reason)
 	}
 	else if (disp_reason[0] == 1)
 	{
-		MYLOG("APP", "RX_EVENT %d\n", disp_reason[0]);
+		// MYLOG("APP", "RX_EVENT %d\n", disp_reason[0]);
 		// RX event display
 		if (g_custom_parameters.test_mode == 1)
 		{
@@ -152,7 +152,7 @@ void handle_display(void *reason)
 	}
 	else if (disp_reason[0] == 2)
 	{
-		MYLOG("APP", "TX_ERROR %d\n", disp_reason[0]);
+		// MYLOG("APP", "TX_ERROR %d\n", disp_reason[0]);
 
 		digitalWrite(LED_BLUE, HIGH);
 		if (has_oled)
@@ -236,7 +236,7 @@ void handle_display(void *reason)
 	}
 	else if (disp_reason[0] == 3)
 	{
-		MYLOG("APP", "JOIN_ERROR %d\n", disp_reason[0]);
+		// MYLOG("APP", "JOIN_ERROR %d\n", disp_reason[0]);
 		if (has_oled)
 		{
 			sprintf(line_str, "LPW mode");
@@ -251,7 +251,7 @@ void handle_display(void *reason)
 	}
 	else if (disp_reason[0] == 4)
 	{
-		MYLOG("APP", "LINK_CHECK %d\n", disp_reason[0]);
+		// MYLOG("APP", "LINK_CHECK %d\n", disp_reason[0]);
 		// LinkCheck result event display
 		if (has_oled)
 		{
@@ -428,7 +428,7 @@ void send_cb_lpw(int32_t status)
  */
 void linkcheck_cb_lpw(SERVICE_LORA_LINKCHECK_T *data)
 {
-	MYLOG("APP", "linkcheck_cb_lpw\n");
+	// MYLOG("APP", "linkcheck_cb_lpw\n");
 	last_snr = data->Snr;
 	last_rssi = data->Rssi;
 	link_check_state = data->State;
