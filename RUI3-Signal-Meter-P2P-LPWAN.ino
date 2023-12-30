@@ -52,16 +52,20 @@ void send_packet(void *data)
 	{
 		MYLOG("APP", "Send packet");
 		uint8_t payload[4] = {0x01, 0x02, 0x03, 0x04};
-		if (use_link_check)
-		{
-			// Linkcheck is enabled, send an unconfirmed packet
-			api.lorawan.send(4, payload, 2, true, 4);
-		}
-		else
-		{
-			// Linkcheck is disabled, send a confirmed packet
-			api.lorawan.send(4, payload, 2, true, 8);
-		}
+		
+		// Always send confirmed packet to make sure a reply is received
+		api.lorawan.send(4, payload, 2, true, 8);
+
+		// if (use_link_check)
+		// {
+		// 	// Linkcheck is enabled, send an unconfirmed packet
+		// 	api.lorawan.send(4, payload, 2, false);
+		// }
+		// else
+		// {
+		// 	// Linkcheck is disabled, send a confirmed packet
+		// 	api.lorawan.send(4, payload, 2, true, 8);
+		// }
 	}
 	else
 	{
