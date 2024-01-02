@@ -80,6 +80,7 @@ void send_packet(void *data)
  *               2 = TX failed display (only LPW mode)
  *               3 = Join failed (only LPW mode)
  *               4 = Linkcheck result display (only LPW LinkCheck mode)
+ *               5 = Join success (only LPW mode)
  */
 void handle_display(void *reason)
 {
@@ -253,6 +254,21 @@ void handle_display(void *reason)
 			rak1921_display();
 		}
 	}
+	else if (disp_reason[0] == 5)
+	{
+		// MYLOG("APP", "JOIN_SUCCESS %d\n", disp_reason[0]);
+		if (has_oled)
+		{
+			sprintf(line_str, "LPW mode");
+			rak1921_write_line(0, 0, line_str);
+			rak1921_write_line(1, 0, (char *)"!!!!!!!!!!!!!!!!!!!");
+			rak1921_write_line(2, 0, (char *)"!!!!!!!!!!!!!!!!!!!");
+			sprintf(line_str, "Device joined network");
+			rak1921_write_line(3, 0, line_str);
+			rak1921_write_line(4, 0, (char *)"!!!!!!!!!!!!!!!!!!!");
+			rak1921_display();
+		}
+	}
 	else if (disp_reason[0] == 4)
 	{
 		// MYLOG("APP", "LINK_CHECK %d\n", disp_reason[0]);
@@ -363,6 +379,11 @@ void join_cb_lpw(int32_t status)
 	if (status != 0)
 	{
 		display_reason = 3;
+		api.system.timer.start(RAK_TIMER_1, 250, &display_reason);
+	}
+	else
+	{
+		display_reason = 5;
 		api.system.timer.start(RAK_TIMER_1, 250, &display_reason);
 	}
 }
