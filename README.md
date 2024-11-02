@@ -1,3 +1,9 @@
+# This project is closed and has been moved to [RUI3-Signal-Meter-P2P-LPWAN](https://github.com/RAKWireless/RUI3-Best-Practice/tree/main/RUI3-Signal-Meter-P2P-LPWAN)
+----
+----
+----
+
+
 # Simple RUI3 based Signal Meter
 | <img src="./assets/RAK-Whirls.png" alt="RAKWireless"> |     <img src="./assets/device.png" alt="Signal Meter" size=50% > | <img src="./assets/rakstar.jpg" alt="RAKstar" > |    
 | :-: | :-: | :-: |
